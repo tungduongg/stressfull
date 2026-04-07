@@ -2,14 +2,8 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export let options = {
-  scenarios: {
-    controlled_spike: {
-      executor: 'per-vu-iterations',
-      vus: 200,                     // giảm VU để client chịu nổi
-      iterations: 10000,             // iterations hợp lý
-      maxDuration: '14400s',         // 4 tiếng
-    },
-  },
+  vus: 200,
+  duration: '24h',
   thresholds: {
     http_req_duration: ['p(95)<1000'], // 95% request dưới 1s
     http_req_failed: ['rate<0.05'],    // <5% fail
