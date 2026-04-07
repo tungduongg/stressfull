@@ -18,7 +18,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run K6 load test
-        uses: grafana/k6-action@v0.3.0
-        with:
-          filename: testtwo.js
+      - name: Run K6 cloud load test
+        run: k6 cloud run testtwo.js
+        env:
+          K6_CLOUD_TOKEN: ${{ secrets.K6_CLOUD_TOKEN }}
