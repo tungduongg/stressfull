@@ -10,6 +10,9 @@ on:
 jobs:
   k6-load-test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        instance: [1, 2, 3, 4, 5]
 
     steps:
       - name: Checkout code
